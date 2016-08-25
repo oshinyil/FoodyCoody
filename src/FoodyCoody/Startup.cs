@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using FoodyCoody.Services;
+using Microsoft.AspNetCore.Routing;
 
 namespace FoodyCoody
 {
@@ -43,14 +44,21 @@ namespace FoodyCoody
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMvc(ConfigureRoute);
             app.UseFileServer();
-            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {
                 var greeting = greeter.GetGreeting();
                 await context.Response.WriteAsync(greeting);
             });
+        }
+
+        private void ConfigureRoute(IRouteBuilder routeBuilder)
+        {
+            // /Home/Index
+            routeBuilder.MapRoute("Default", 
+                "{controller=Home}/{action=Index}/{id?}");
         }
     }
 }
