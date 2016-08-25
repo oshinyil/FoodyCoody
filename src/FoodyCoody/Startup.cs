@@ -30,6 +30,7 @@ namespace FoodyCoody
         {
             services.AddSingleton(provider => Configuration);
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddMvcCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +44,7 @@ namespace FoodyCoody
             }
 
             app.UseFileServer();
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {
