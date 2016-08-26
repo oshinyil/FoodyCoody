@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using FoodyCoody.Models;
+using FoodyCoody.Services;
 
 namespace FoodyCoody.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index()
+        private IRestaurantData _restaurant;
+
+        public HomeController(IRestaurantData restaurantData)
         {
-            return "Hello, from a controller!";
+            _restaurant = restaurantData;
+        }
+        public ViewResult Index()
+        {
+            var model = _restaurant.GetAll();
+            return View(model);
         }
     }
 }

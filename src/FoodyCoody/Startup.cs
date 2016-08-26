@@ -31,7 +31,8 @@ namespace FoodyCoody
         {
             services.AddSingleton(provider => Configuration);
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddMvcCore();
+            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
