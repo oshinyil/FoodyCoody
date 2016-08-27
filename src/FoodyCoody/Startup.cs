@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using FoodyCoody.Services;
 using Microsoft.AspNetCore.Routing;
+using FoodyCoody.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodyCoody
 {
@@ -33,6 +31,7 @@ namespace FoodyCoody
             services.AddSingleton<IGreeter, Greeter>();
             services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
             services.AddMvc();
+            services.AddDbContext<FoodyCoodyDbContext>(options => options.UseSqlServer(Configuration["database:connection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
