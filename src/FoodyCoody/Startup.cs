@@ -29,7 +29,7 @@ namespace FoodyCoody
         {
             services.AddSingleton(provider => Configuration);
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();
             services.AddMvc();
             services.AddDbContext<FoodyCoodyDbContext>(options => options.UseSqlServer(Configuration["database:connection"]));
         }
