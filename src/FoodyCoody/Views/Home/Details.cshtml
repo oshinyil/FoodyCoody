@@ -1,15 +1,12 @@
 ﻿@model FoodyCoody.Entities.Restaurant
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>@Model.Name</title>
-</head>
-<body>
-    <h1>@Model.Name</h1>
-    <h1>Id: @Model.Id</h1>
-    <h1>Cuisine: @Model.Cuisine</h1>
-    <div>
-        <a href="/">Home</a>
-        @Html.ActionLink("Home", "Index")
-    </div>
-</body>
-</html>
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+<h1>Id: @Model.Id</h1>
+<h1>Cuisine: @Model.Cuisine</h1>
+<div>
+    <a href="/">Home</a>
+    @Html.ActionLink("Home", "Index")
+</div>
