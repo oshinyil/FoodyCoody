@@ -34,5 +34,10 @@ namespace FoodyCoody.Services
         {
             return _restaurants;
         }
+
+        public int Commit()
+        {
+            return 0;
+        }
     }
 }

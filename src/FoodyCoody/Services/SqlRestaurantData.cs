@@ -16,7 +16,6 @@ namespace FoodyCoody.Services
         public void Add(Restaurant restaurant)
         {
             _context.Add(restaurant);
-            _context.SaveChanges();
         }
 
         public Restaurant Get(int id)
@@ -27,6 +26,11 @@ namespace FoodyCoody.Services
         public IEnumerable<Restaurant> GetAll()
         {
             return _context.Restaurants.ToList();
+        }
+
+        public int Commit()
+        {
+            return _context.SaveChanges();
         }
     }
 }
